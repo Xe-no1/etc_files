@@ -22,13 +22,19 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 archlinux" >> /etc/hosts
 
-pacman -S grub efibootmgr terminus-font
+pacman -S grub efibootmgr sudo terminus-font
 
 grub-install --efi-directory=/boot --bootloader-id=GRUB
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
 passwd
+
+useradd -m -g users -G wheel,storage,power,video,audio,input mazentech
+passwd mazentech
+
+export EDITOR=nvim 
+visudo
 
 systemctl enable NetworkManager
 
