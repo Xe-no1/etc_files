@@ -1,7 +1,5 @@
 #!/bin/bash
 
-fdisk /dev/sda
-
 mkfs.ext4 /dev/sda2
 mkfs.fat -F 32 /dev/sda1
 
