@@ -1,10 +1,12 @@
 #!/bin/bash
 
-mkfs.ext4 /dev/sda2
-mkfs.fat -F 32 /dev/sda1
+fdisk /dev/vda
 
-mount /dev/sda2 /mnt
-mount --mkdir /dev/sda1 /mnt/boot
+mkfs.ext4 /dev/vda2
+mkfs.fat -F 32 /dev/vda1
+
+mount /dev/vda2 /mnt
+mount --mkdir /dev/vda1 /mnt/boot
 
 pacstrap -K /mnt base base-devel linux linux-firmware e2fsprogs networkmanager sof-firmware git neovim man-db man-pages texinfo archlinuxarm-keyring
 
